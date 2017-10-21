@@ -1,0 +1,30 @@
+<h3>Product Management</h3>
+
+<form class="well">
+  <input placeholder="Enter Product Name" [(ngModel)]="fromProduct.name" name="txtName">
+  <input placeholder="Enter Product Price" [(ngModel)]="fromProduct.price" name="txtPrice">
+  <input placeholder="Enter Product Description" [(ngModel)]="fromProduct.description" name="txtDescription">
+  <button class="btn btn-primary" (click)="saveProduct()">Save</button>
+</form>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngIf="products.length==0">
+    <td colspan="4">No Products Found.</td>
+  </tr>
+  <tr *ngFor="let product of products; let i = index">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="deleteProduct(product.id,i)">Delete</button>
+      <button class="btn btn-success" (click)="editProduct(product)" >Edit</button>
+    </td>
+  </tr>
+</table>
